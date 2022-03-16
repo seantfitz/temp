@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chart Builder</title>
+	<link rel='stylesheet' id='theme-css-css'  href='css/fonts.css' type='text/css' media='all' />
+	<script src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/f1a01896135ab378aa5c0118eadd81da55e698d8/canvas-toBlob.js" defer></script>
+	<script src="https://cdn.rawgit.com/eligrey/FileSaver.js/e9d941381475b5df8b7d7691013401e171014e89/FileSaver.min.js" defer></script>
+
+	<script src="https://www.gstatic.com/charts/loader.js" defer></script>
+    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+
+<style type="text/css">
+	body{
+		background-color: #dedede;
+		font-family: 'Gilroy';
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		/*justify-content: center;*/
+		align-items: center;
+	}
+
+	.inputFields{
+		display: flex;
+		width: 870px;
+		margin: 10px;
+		/*justify-content: space-evenly;*/
+		/*justify-content: space-between;*/
+	}
+	.space_between{
+		justify-content: space-between;
+	}
+	input[type=text],input[type=url]{
+		margin: 0 10px 0 0;
+	}
+	.marginInput{
+		max-width: 40px;
+		margin: 0 20px 0 0;
+	}
+
+	#chartFrame{
+		width: 870px;
+		height: 380px;
+		overflow: hidden;
+	}
+
+
+
+	.displayNone{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<div class="inputFields">
+		<input type="url" name="address" id="address" placeholder="Google Sheet URL">
+		<input type="text" name="title" id="title" placeholder="Enter title here">
+		<input type="text" name="source" id="source" placeholder="Enter data source here">
+		<a id="sheetLink" class="displayNone" target="_blank" href="">Sheet Link</a>
+		<a id="newSheet" target="_blank" href="http://sheets.new">New Google Sheet</a>
+	</div>
+
+	<!-- <div class="inputFields">
+		<input type="radio" name="axialTilt" id="_0" value="0">
+		<label for="_0">0&deg;</label>
+		<input type="radio" name="axialTilt" id="_45" value="45" checked>
+		<label for="_45">45&deg;</label>
+		<input type="radio" name="axialTilt" id="_90" value="90">
+		<label for="_90">90&deg;</label>
+	</div> -->
+
+	<div class="inputFields">
+		Left:&nbsp;<input type="number" class="marginInput" id="marginLeft">
+		Bottom:&nbsp;<input type="number" class="marginInput" id="marginBottom">
+		Right:&nbsp;<input type="number" class="marginInput" id="marginRight">
+		Top:&nbsp;<input type="number" class="marginInput" id="marginTop">
+	</div>
+	<!-- <input type="number" name="cols" id="cols" value="1" min="1"> -->
+
+
+	<div id="chartFrame">
+		<div id="chartFrameInner">
+			<svg id="chart"></svg>
+		</div>
+	</div>
+
+	<div class="inputFields space_between">
+		<div>
+			<input type="radio" name="axialTilt" id="_0" value="0">
+			<label for="_0">0&deg;</label>
+			<input type="radio" name="axialTilt" id="_45" value="45" checked>
+			<label for="_45">45&deg;</label>
+			<input type="radio" name="axialTilt" id="_90" value="90">
+			<label for="_90">90&deg;</label>
+		</div>
+		<button id="save_button" title="Save">Save</button>
+	</div>
+
+	<script src="script/index.js" defer></script>
+	<script src="script/capture.js" defer></script>
+</body>
+</html>
