@@ -15,41 +15,33 @@
 <style type="text/css">
 	body{
 		background-color: #dedede;
-		font-family: 'Gilroy';
+		font-family: 'Gilroy' sans-serif;
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		/*justify-content: center;*/
 		align-items: center;
 	}
-
 	.inputFields{
 		display: flex;
-		width: 870px;
 		margin: 10px;
-		/*justify-content: space-evenly;*/
-		/*justify-content: space-between;*/
 	}
 	.space_between{
 		justify-content: space-between;
 	}
-	input[type=text],input[type=url]{
+	input[type=text],input[type=url],#reload{
 		margin: 0 10px 0 0;
 	}
 	.marginInput{
 		max-width: 40px;
 		margin: 0 20px 0 0;
 	}
-
 	#chartFrame{
-		width: 870px;
-		height: 380px;
 		background-color: #fff;
 		overflow: hidden;
 	}
-
-
-
+	#chart{
+		display: block;
+	}
 	.displayNone{
 		display: none;
 	}
@@ -58,6 +50,7 @@
 <body>
 	<div class="inputFields">
 		<input type="url" name="address" id="address" placeholder="Google Sheet URL">
+		<button id="reload" disabled>Reload</button>
 		<input type="text" name="title" id="title" placeholder="Enter title here">
 		<input type="text" name="source" id="source" placeholder="Enter data source here">
 		<a id="sheetLink" class="displayNone" target="_blank" href="">Sheet Link</a>
@@ -74,6 +67,7 @@
 	</div> -->
 
 	<div class="inputFields">
+		Height:&nbsp;<input type="number" class="marginInput" id="heightAdjust">
 		Left:&nbsp;<input type="number" class="marginInput" id="marginLeft">
 		Bottom:&nbsp;<input type="number" class="marginInput" id="marginBottom">
 		Right:&nbsp;<input type="number" class="marginInput" id="marginRight">

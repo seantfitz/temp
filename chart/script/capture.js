@@ -1,28 +1,20 @@
 const svg = d3.select('#chart')
-
-let width = 1200
-let height = 600
-
 // Set-up the export button
 d3.select('#save_button').on('click', function(){
 
+	let width = outer_width;
+	let height = outer_height;
+	
+	console.log(width,height)
+	
 	let d = new Date()
-
-	let yyyy = d.getFullYear()
-	let mm = d.getMonth() + 1;
-	if(mm < 10){mm = `0${mm}`}
-	let dd = d.getDate()
-	if(dd < 10){mdd= `0${dd}`}
-	let hh = d.getHours()
-	if(hh < 10){hh = `0${hh}`}
-	let mn = d.getMinutes()
-	if(mn < 10){mn = `0${mn}`}
-	let ss = d.getSeconds()
-	if(ss < 10){ss = `0${ss}`}
-
+	let yyyy = d.getFullYear();
+	let mm = d.getMonth() + 1;if(mm < 10){mm = `0${mm}`};
+	let dd = d.getDate();if(dd < 10){mdd= `0${dd}`};
+	let hh = d.getHours();if(hh < 10){hh = `0${hh}`};
+	let mn = d.getMinutes();if(mn < 10){mn = `0${mn}`};
+	let ss = d.getSeconds();if(ss < 10){ss = `0${ss}`};
 	let ts = `${yyyy}${mm}${dd}${hh}${mn}${ss}`
-
-	// console.log(`${chartname}${ts}`)
 
 	var svgString = getSVGString(svg.node());
 	svgString2Image(svgString, 2 * width, 2 * height, 'png', save ); // passes Blob and filesize String to the callback
@@ -107,6 +99,7 @@ function getSVGString( svgNode ) {
 
 
 function svgString2Image( svgString, width, height, format, callback ) {
+
 	var format = format ? format : 'png';
 
 	var imgsrc = 'data:image/svg+xml;base64,'+ btoa( unescape( encodeURIComponent( svgString ) ) ); // Convert SVG string to data URL

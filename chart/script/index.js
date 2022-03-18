@@ -1,15 +1,15 @@
 google.charts.load('current');
-// google.charts.setOnLoadCallback(init);
 
 const init = (url)=>{
 	let query = new google.visualization.Query(url);
 	query.setQuery('select A, B');
 	query.send(processSheetsData);
 }
-let array = []
+
 const processSheetsData = (response)=>{
-	// let array = [];
-	// window['array'] = [];
+
+	window['array'] = []
+
 	let data = response.getDataTable();
 	let columns = data.getNumberOfColumns();
 	let rows = data.getNumberOfRows();
@@ -71,12 +71,24 @@ const abbreviateNumber = (value)=>{
 	return newValue;
 }
 
+let outer_width = 790
+let outer_height = 380
+
 let margin = {
 	top: 60,
 	right: 20,
 	bottom: 50,
 	left: 40
 };
+
+let vertical_difference = outer_height - margin.bottom;
+
+let padding = {
+	top: 0,
+	right: 0,
+	bottom: 0,
+	left: 0
+}
 
 let tilt = {
 	x:'-0.4em',
@@ -87,17 +99,13 @@ let tilt = {
 
 let chartname = 'chart_'
 
+const inputFields = d3.selectAll('.inputFields').style('width',`${outer_width}px`)
+// const chartFrame = d3.select('#chartFrame').style('width',`${outer_width}px`).style('height',`${outer_height}px`)
+
 const column_chart = (data)=>{
-
-	let padding = {
-		top: 110,
-		right: 165,
-		bottom: 110,
-		left: 165
-	}
-
-	let width = 1200 - margin.left - margin.right - padding.left - padding.right;
-	let height = 600 - margin.top - margin.bottom - padding.top - padding.bottom;
+	console.log(outer_height,margin.bottom,vertical_difference)
+	let width = outer_width - margin.left - margin.right - padding.left - padding.right;
+	let height = outer_height - margin.top - margin.bottom - padding.top - padding.bottom;
 
 	let d = data;
 	let max = 0;
@@ -147,7 +155,6 @@ const column_chart = (data)=>{
 		.data([{}])
 		.enter()
 		.append('text')
-		// .text('This is a title')
 		.text(title.property('value'))
 		.classed('title',true)
 		.attr('font-size','1.2em')
@@ -171,7 +178,6 @@ const column_chart = (data)=>{
 		.attr('text-anchor','end')
 		.attr('fill','#777777')
 
-	// const clear_chart = container.selectAll('g').remove();
 	const chart = container.append('g')
 
 	const bars = chart
@@ -226,10 +232,16 @@ const column_chart = (data)=>{
 		.attr('font-family','Gilroy')
 		.attr('font-size','0.8em')
 		.classed('axisY',true)
-
 };
 
 /*input functions*/
+
+let shift = false;
+
+d3.select('*').on('keydown keyup',(e)=>{
+	shift = e.shiftKey;
+})
+
 const title = d3
 	.select('#title')
 	.on('change keyup focus blur',(e)=>{
@@ -301,10 +313,12 @@ const address = d3
 			if(v != ''){
 				sheetLink.property('href',v).classed('displayNone',false);
 				newSheet.classed('displayNone',true);
+				reload.property('disabled',false);
 				init(v);	
 			}else{
 				sheetLink.classed('displayNone',true);
 				newSheet.classed('displayNone',false);
+				reload.property('disabled',true);
 			}
 
 			e.target.blur()
@@ -356,18 +370,48 @@ const axialTilt = d3
 		;
 	})
 
+// const upDown = (target)=>{
+// 	let v;
+// 	switch(target){
+// 		case 'heightAdjust':
+// 		outer_height = +v
+// 		case 'marginLeft':
+// 		margin.left = +v
+// 		case 'marginBottom':
+// 		margin.bottom = +v
+// 		case 'marginRight':
+// 		margin.right = +v
+// 		case 'marginTop':
+// 		margin.top = +v
+// 	}
+// }
+
 const marginInput = d3
 	.selectAll('.marginInput')
 	.on('change',(e)=>{
+
 		let id = e.target.id;
+
+		// let pv = e.target.data;console.log(pv)
+
+		if(shift){
+			// e.target.value = + e.target.value + 10;
+		}
+
 		let v = e.target.value;
 
 		switch(id){
+			case 'heightAdjust':
+			outer_height = +v
+			margin.bottom = outer_height - vertical_difference;
+			document.getElementById('marginBottom').value = margin.bottom;
+			break;
 			case 'marginLeft':
 			margin.left = +v
 			break;
 			case 'marginBottom':
 			margin.bottom = +v
+			vertical_difference = outer_height - margin.bottom;
 			break;
 			case 'marginRight':
 			margin.right = +v
@@ -380,11 +424,20 @@ const marginInput = d3
 		column_chart(array)
 	})
 
+const reload = d3
+	.select('#reload')
+	.on('click',()=>{
+		init(address.attr('value'))
+	})
+
 /*google charts function*/
 google.charts.setOnLoadCallback(()=>{
 	
 	for(i of marginInput){
 		switch(i.id){
+			case 'heightAdjust':
+			i.value = outer_height
+			break;
 			case 'marginLeft':
 			i.value = margin.left
 			break;
@@ -405,8 +458,10 @@ google.charts.setOnLoadCallback(()=>{
 		address.attr('value',v);
 		sheetLink.property('href',v).classed('displayNone',false);
 		newSheet.classed('displayNone',true);
+		reload.property('disabled',false);
 		init(v)
 	}else{
 		address.node().focus();
+		reload.property('disabled',true);
 	}
 });
