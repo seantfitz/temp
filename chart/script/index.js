@@ -131,7 +131,7 @@ const column_chart = (data)=>{
 
 	const container = d3.select('#chart')
 		.classed('container',true)
-		.attr('font-family','Gilroy')
+		.attr('font-family','gilroyregular')
 		.attr('width',width + margin.left + margin.right + padding.left + padding.right)
 		.attr('height',height + margin.top + margin.bottom + padding.top + padding.bottom)
 		.attr('y',(margin.top - margin.bottom) / 2)
@@ -207,7 +207,7 @@ const column_chart = (data)=>{
 
 	const axisX = chart.append('g')
 		.call(d3.axisBottom(xScale).tickSizeOuter(0))
-		.attr('font-family','Gilroy')
+		.attr('font-family','gilroyregular')
 		.attr('font-size','0.8em')
 		.attr('transform',`translate(0,${height})`)
 		.classed('axisX',true)
@@ -229,7 +229,7 @@ const column_chart = (data)=>{
 				return abbreviateNumber(d)
 			})
 		)
-		.attr('font-family','Gilroy')
+		.attr('font-family','gilroyregular')
 		.attr('font-size','0.8em')
 		.classed('axisY',true)
 };
