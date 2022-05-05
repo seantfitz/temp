@@ -131,7 +131,7 @@ const column_chart = (data)=>{
 
 	const container = d3.select('#chart')
 		.classed('container',true)
-		.attr('font-family','gilroyregular')
+		.style('font-family','gilroyregular')
 		.attr('width',width + margin.left + margin.right + padding.left + padding.right)
 		.attr('height',height + margin.top + margin.bottom + padding.top + padding.bottom)
 		.attr('y',(margin.top - margin.bottom) / 2)
@@ -140,7 +140,7 @@ const column_chart = (data)=>{
 			-(margin.top - margin.bottom) / 2,
 			 width + margin.left + margin.right + padding.left + padding.right,
 			 height
-		])
+		])//
 
 		.style("background", "#fff")
 		

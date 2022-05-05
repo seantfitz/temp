@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Philippines Election</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+	<style type="text/css">
+		@charset "UTF-8";
+		@font-face {
+			font-family: 'Gilroy';
+			src: url("../assets/fonts/Gilroy-SemiBold.eot");
+			src: local("Gilroy SemiBold"), local("../assets/fonts/Gilroy-SemiBold"), url("../assets/fonts/Gilroy-SemiBold.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Gilroy-SemiBold.woff") format("woff"), url("../assets/fonts/Gilroy-SemiBold.ttf") format("truetype");
+			font-weight: 600;
+			font-style: normal; 
+		}
+		@font-face {
+			font-family: 'Gilroy';
+			src: url("../assets/fonts/Gilroy-Regular.eot");
+			src: local("Gilroy Regular"), local("../assets/fonts/Gilroy-Regular"), url("../assets/fonts/Gilroy-Regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Gilroy-Regular.woff") format("woff"), url("../assets/fonts/Gilroy-Regular.ttf") format("truetype");
+			font-weight: normal;
+			font-style: normal; 
+		}
+		@font-face {
+			font-family: 'Gilroy';
+			src: url("../assets/fonts/Gilroy-Medium.eot");
+			src: local("Gilroy Medium"), local("../assets/fonts/Gilroy-Medium"), url("../assets/fonts/Gilroy-Medium.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Gilroy-Medium.woff") format("woff"), url("../assets/fonts/Gilroy-Medium.ttf") format("truetype");
+			font-weight: 500;
+			font-style: normal; 
+		}
+		@font-face {
+			font-family: 'Gilroy';
+			src: url("../assets/fonts/Gilroy-Bold.eot");
+			src: local("Gilroy Bold"), local("../assets/fonts/Gilroy-Bold"), url("../assets/fonts/Gilroy-Bold.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Gilroy-Bold.woff") format("woff"), url("../assets/fonts/Gilroy-Bold.ttf") format("truetype");
+			font-weight: bold;
+			font-style: normal; 
+		}
+		@font-face {
+			font-family: 'Gilroy';
+			src: url("../assets/fonts/Gilroy-ExtraBold.eot");
+			src: local("Gilroy Bold"), local("../assets/fonts/Gilroy-ExtraBold"), url("../assets/fonts/Gilroy-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Gilroy-ExtraBold.woff") format("woff"), url("../assets/fonts/Gilroy-ExtraBold.ttf") format("truetype");
+			font-weight: 900;
+			font-style: normal; 
+		}
+		:root{
+			--swiper-pagination-color: #de2508;
+			--swiper-theme-color: #de2508;
+		}
+		body{
+			margin: 0;
+			font-family: 'Gilroy', sans-serif;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.swiper{
+			min-width: 360px;
+			max-width: 870px;
+			width: 100vw;
+			height: 600px;
+			padding: 30px 50px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.swiper-slide{
+			background-color: #000;
+			display: flex;
+			align-items: center;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			padding: 20px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.picBox{
+			width: 100%;
+			background-position: center;
+			background-size: cover;
+			display: none;
+			flex-grow: 1;
+		}
+		.textCol{
+			padding: 10px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			width: 50%;
+			background-color: #000;
+			background-color: rgba(0,0,0,0.75);
+			color: #fff;
+		}
+		.slide_01{
+			background-image: url(images/crowd.png);
+			justify-content: center;
+			align-items: flex-end;
+		}
+		.slide_02{
+			background-image: url(images/marcos.png);
+		}
+		.slide_03{
+			background-image: url(images/pacquiao.png);
+			justify-content: right;
+		}
+		.slide_04{
+			background-image: url(images/robredo.png);
+		}
+		.slide_05{
+			background-image: url(images/duterte.png);
+			justify-content: right;
+		}
+		.slide_06{
+			background-image: url(images/voting.png);
+			justify-content: center;
+			align-items: flex-start;
+		}
+		.slide_01 .textCol{
+			width: 100%;
+		}
+		.slide_06 .textCol{
+			width: 80%;
+		}
+		.bold{
+			font-weight: bold;
+		}
+		.italic{
+			font-style: italic;
+		}
+		h1{
+			margin-block-start: unset;
+			margin-block-end: unset;
+		}
+		p{
+			/*font-family: 'Georgia Pro', Georgia, serif;*/
+			margin-block-start: 0.6em;
+			margin-block-end: 0.6em;
+		}
+		@media screen and (max-width: 699px){
+			body{
+				font-size: 0.8em;
+			}
+			.swiper-slide{
+				padding: 10px;
+			}
+		}
+		@media screen and (max-width: 499px){
+			.swiper-slide{
+				flex-direction: column;
+				padding: 0;
+				background-size: contain;
+				background-position: top;
+				align-items: flex-end;
+				background-image: none;
+			}
+			.picBox{
+				display: block;
+			}
+			.swiper-slide .textCol{
+				width: 100%;
+			}
+		}
+		*{
+			user-select: none;
+		}
+	</style>
+</head>
+<body>
+
+<div class="swiper">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide slide_01">
+			<div class="picBox slide_01"></div>
+			<div class="textCol rightCol">
+				<h1>Philippines Presidential Election</h1>
+				<p>Following the volatile presidency of Rodrigo Duterte, Filipinos head to the polls on Sunday, May 9 to elect a new president <span class="bold italic">and vice president</span>.</p>
+				<p>Serving just one six-year term, voters have been offered a unique line-up of candidates, ranging from the son of a former dictator to a boxing world champion and an anti-poverty campaigner hoping to drag the country through the pandemic. </p>
+				<p>Meet the main candidates.</p>
+			</div>
+		</div>
+
+		<div class="swiper-slide slide_02">
+			<div class="picBox slide_02"></div>
+			<div class="textCol leftCol">
+				<h1>Ferdinand "Bongbong" Marcos</h1>
+				<p>The son of former dictator Ferdinand Marcos, "Bongbong" Marcos is the front runner to win the election.</p>
+				<p>The former senator is leading in opinion polls despite being listed as a defendant in the long-running trials to recover assets allegedly stolen by his family under his father’s rule, which ended in 1986.</p>
+				<p>Marcos is campaigning on a promise to improve the country's pandemic response.</p>
+			</div>
+		</div>
+
+		<div class="swiper-slide slide_03">
+			<div class="picBox slide_03"></div>
+			<div class="textCol leftCol">
+				<h1>Manny Pacquiao</h1>
+				<p>Manny Pacquiao has been a constant in Philippine politics since his election to the senate in 2010.</p>
+				<p>"Pacman" Pacquiao is also considered to be one of the finest boxers of all time, winning 12 major world titles in eight different weight divisions in a career that spanned more than 20 years. His political career has not been as star studded, however, with the 43-year-old considered the most absentee among lawmakers in parliament.</p>
+				<p>Pacquiao is running on an anti-corruption agenda and says he will appoint evangelical Christian leaders to his cabinet if elected.</p>
+			</div>
+		</div>
+			
+		<div class="swiper-slide slide_04">
+			<div class="picBox slide_04"></div>
+			<div class="textCol leftCol">
+				<h1>Leni Robredo</h1>
+				<p>The current Vice-President, Leni Robredo <span class="bold italic">could have run for the same post but has chosen to throw her hat into the ring for the top job</span>. She is running second in opinion polls behind Marcos despite beating him to the VP’s job in 2016. Marcos mounted a legal challenge to unseat Robredo, but a recount saw her increase her winning margin.</p>
+				<p>Robredo is running as an Independent candidate in an effort to show a willingness to collaborate with other parties despite being the chairperson of the Liberal Party. She is running on an anti-poverty platform.</p>
+				<p>Should Robredo win the election, she would be the third female president of the Philippines.</p>
+			</div>
+		</div>
+			
+		<div class="swiper-slide slide_05">
+			<div class="picBox slide_05"></div>
+			<div class="textCol leftCol">
+				<h1>Sara Duterte</h1>
+				<p>In the hunt for the vice president’s post, Sara Duterte is the running mate of "Bongbong" Marcos.</p>
+				<p>The Duterte name is set to become another Filipino dynasty, Sara is the daughter of outgoing President Rodrigo Duterte. She is just one of three Duterte children currently serving in local and national politics.</p>
+			</div>
+		</div>
+			
+		<div class="swiper-slide slide_06">
+			<div class="picBox slide_06"></div>
+			<div class="textCol leftCol">
+				<h1>How the counting works</h1>
+				<p>The person with the highest vote wins in The Philippines’ "first past the post" system. This means that presidential hopefuls require a solid voter base to overcome the risk of vote splitting between candidates.</p>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-pagination"></div>
+	<div class="swiper-button-next swiper-button"></div>
+	<div class="swiper-button-prev swiper-button"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script type="text/javascript">
+	let swiper = new Swiper('.swiper',{
+
+		effect: 'flip',
+		grabCursor: true,
+		loop: true,
+
+		pagination: {
+			el: ".swiper-pagination",
+			dynamicBullets: false,
+			clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+	})
+</script>
+</body>
+</html>
