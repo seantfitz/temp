@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Leaflet Multi Polygons</title>
+		<link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+		<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	</head>
+	
+	<body>
+		<div id = "map" style = "width: 900px; height: 580px"></div>
+		<script>
+			// Creating map options
+			var mapOptions = {
+				center: [16.506174, 80.648015],
+				zoom: 7
+			}
+			// Creating a map object
+			var map = new L.map('map', mapOptions);
+			
+			// Creating a Layer object
+			var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+			
+			// Adding layer to the map
+			map.addLayer(layer);
+			
+			// Creating latlng object
+			var latlang = [
+				[[17.385044, 78.486671], [16.506174, 80.648015], [17.686816, 83.218482]],
+				[[13.082680, 80.270718], [12.971599, 77.594563],[15.828126, 78.037279]]
+			];
+			// Creating multi polygon options
+			var multiPolygonOptions = {color:'green', weight:8};
+			
+			// Creating multi polygons
+			var multipolygon = L.multiPolygon(latlang , multiPolygonOptions);
+			
+			// Adding multi polygon to map
+			multipolygon.addTo(map);
+		</script>
+	</body>
+	
+</html>

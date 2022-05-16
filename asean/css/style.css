@@ -1,0 +1,101 @@
+body{
+	border: none;
+	margin: 0;
+}
+#cesiumContainer{
+	width: 100vw;
+	height: 100vh;
+}
+#toolBar{
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+.layerOff{
+	border-color: unset!important;
+}
+.on{
+	color: #0f0!important;
+}
+.off{
+	color: #777!important;
+}
+.layerOff .on{
+	color: #777!important;
+}
+.layerOff .off{
+	color: #f00!important;
+}
+.viewControl span{
+	pointer-events: none;
+}
+button.cesium-infoBox-camera{
+	display: none;
+}
+select{
+	max-width: 200px;
+	width: 200px;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+select:disabled{
+	cursor: not-allowed!important;
+}
+.cesium-infoBox{
+	right: 10px;
+	border-radius: 7px;
+	overflow-x: hidden;
+}
+.displayNone{
+	display: none;
+}
+
+/**/
+
+.tooltip{
+	position: absolute;
+	/*background-color: #0f0;*/
+	pointer-events: none;
+	
+	width: 100vw;
+	/*width: 0px;*/
+	/*height: 20px;*/
+	margin: -35px 0 0 -50vw;
+	/*margin: 0 0 0 -50vw;*/
+
+	display: flex;
+	justify-content: center;
+
+}
+.tooltip span{
+	font-family: sans-serif;
+	/*visibility: hidden;*/
+	/*width: 120px;*/
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	/*padding: 5px 0;*/
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	/*bottom: 125%;*/
+	/*left: 50%;*/
+	/*margin-left: -60px;*/
+	/*opacity: 0;*/
+	transition: opacity 0.3s;
+}
+.opaque{
+	opacity: 1;
+}
+.tooltip span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
