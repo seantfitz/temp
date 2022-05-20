@@ -1,0 +1,47 @@
+#header{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+main{
+	background: #fc0;
+	margin: 50px 0 0;
+	width: 100vw;
+	/*height: 50vh;*/
+}
+
+@media all and (max-width: 1200px){
+	main{
+		margin: 70px 0 0;
+	}
+}
+
+.block{
+	width: 200px;
+	height: 200px;
+	/*height: calc(100vh - 100px);*/
+}
+
+.red{
+	background-color: #f00;
+}
+.green{
+	background-color: #0f0;
+	position: sticky;
+	top: 50px;
+}
+.blue{
+	background-color: #00f;
+}
+.cyan{
+	background-color: #0ff;
+}
+.magenta{
+	background-color: #f0f;
+}
+.yellow{
+	background-color: #ff0;
+}
+.black{
+	background-color: #000;
+	color: #fff;
+}
