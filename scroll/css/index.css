@@ -17,8 +17,12 @@ main{
 
 .block{
 	width: 200px;
+	/*width: 100vw;*/
 	height: 200px;
 	/*height: calc(100vh - 100px);*/
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-y: auto;
 }
 
 .red{
