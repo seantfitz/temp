@@ -32,13 +32,13 @@
 			width: 100%;
 			height: 100%;
 			border-bottom: 1px solid #dfdfdf;
+			/*padding-top: 45px;*/
 		}
 		.voa_container_inner{
 			position: relative;
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
-			padding-top: 45px;
 		}
 		.voa_iframe{
 			position: absolute;
@@ -46,43 +46,26 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+			/*top: 45px;*/
 		}
 		.voa_cover_block{
+			/*position: absolute;*/
 			position: relative;
 			width: 100vw;
 			height: 45px;
 			top: 0px;
+			/*right: 0px;*/
 			border-bottom: 1px solid #dfdfdf;
-			/*background-color: rgba(0, 0, 0, 0.5);*/
+			background-color: rgba(0, 0, 0, 0.5);
 		}
 		.voa_cover_block_inner{
 			max-width: 1280px;
 			width: 100%;
 			height: 100%;
 			margin: auto;
-			background-color: #fff;
+			/*background-color: #fff;*/
 			display: flex;
-			justify-content: space-between;
-		}
-		.voa_cover_block_left, .voa_cover_block_right{
-			display: flex;
-			align-items: center;
-		}
-		.newsnet_logo_icon{
-			width: 35px;
-			height: 35px;
-			background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 26.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 45 45' style='enable-background:new 0 0 45 45;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23231F20;%7D .st1%7Bfill:%237D9BCA;%7D%0A%3C/style%3E%3Cg%3E%3Cg%3E%3Crect x='38.2' y='38.2' class='st0' width='6.8' height='6.8'/%3E%3Cpolygon class='st0' points='27.7,23.2 16.9,10.1 10.2,10.1 10.2,34.8 17.3,34.8 17.3,21.3 28.5,34.8 34.8,34.8 34.8,10.1 27.7,10.1 '/%3E%3C/g%3E%3Cpolygon class='st1' points='38.2,38.2 6.8,38.2 6.8,6.8 38.2,6.8 38.2,38.2 45,38.2 45,0 0,0 0,45 38.2,45 '/%3E%3C/g%3E%3C/svg%3E%0A");
-			margin-left: 15px;
-		}
-		.special_report{
-			margin: 0 0 0 0.5em;
-			color: #7d9bca;
-			font-weight: bold;
-		}
-		.voa_cover_block_right a{
-			width: 20px;
-			height: 20px;
-			margin-right: 15px;
+			justify-content: flex-end;
 		}
 		.iframe_scroll_block{
 			position: fixed;
@@ -91,14 +74,15 @@
 			top: 50px;
 			pointer-events: none;
 			overflow: hidden;
-			/*background-color: rgba(0, 255, 0, 0.5);*/
+			background-color: rgba(0, 255, 0, 0.5);
 		}
 		.scroll_inner{
-			position: relative;
 			width: 100%;
+			height: 45px;
+			position: relative;
 			height: 100%;
 			pointer-events: auto;
-			/*background-color: rgba(255, 0, 0, 0.5);*/
+			background-color: rgba(255, 0, 0, 0.5);
 		}
 		@media screen and (max-width: 1200px){
 			.sticky_box{
@@ -114,11 +98,6 @@
 <body>
 	<header id="header" class=""> <div class="container-full-hd header-container"> <div class="localization"> <div class="localization__item"><a href="/">International Edition</a></div></div><a href="https://news.net" class="logo-header"> <div class="fix-logo">NEWS NET</div><img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/logo-square.png" alt="" height="100" width="100"> </a> <nav> <div id="menu-main" class="menu"> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-21 category main-menu-link " href="https://news.net/section/top-stories/" data-image="top"> Top </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-24 category main-menu-link " href="https://news.net/section/business/" data-image="24"> Business </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-25 category main-menu-link " href="https://news.net/section/politics/" data-image="25"> Politics </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section current-news-ancestor menu-item-26 category main-menu-link " href="https://news.net/section/the-issues/" data-image="26"> The Issues </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-27 category main-menu-link " href="https://news.net/section/entertainment/" data-image="entertain"> Entertain </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-29 category main-menu-link " href="https://news.net/section/technology/" data-image="tech"> Tech </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-30 category main-menu-link " href="https://news.net/section/health-science/" data-image="health-science"> Health </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-33 category main-menu-link " href="https://news.net/section/life-style/" data-image="life-style"> Life/Style </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-31 category main-menu-link " href="https://news.net/section/travel/" data-image="31"> Travel </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-549308 category main-menu-link " href="https://news.net/section/the-planet/" data-image="549308"> The Planet </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-549309 category main-menu-link " href="https://news.net/section/essentials/" data-image="549309"> Essentials </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-36 category main-menu-link " href="https://news.net/section/good-news/good-news-stories/" data-image="36"> Good News </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-32 category main-menu-link " href="https://news.net/section/videos/" data-image="32"> Videos </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-34 category main-menu-link " href="https://news.net/section/photo-gallery/" data-image="34"> Photos </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-35 category main-menu-link " href="https://news.net/section/sport/" data-image="35"> Sport </a> </div></nav> <div class="header-search"><form action="https://news.net" method="GET"><input type="text" placeholder="Search News.net, Web, or Wikipedia" name="s" value=""> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"> <g fill="none" fill-rule="evenodd"> <g fill="#FFF" fill-rule="nonzero"> <g> <g> <g> <path d="M6.606 0C2.963 0 0 2.963 0 6.606c0 3.642 2.963 6.605 6.606 6.605 3.642 0 6.605-2.963 6.605-6.605C13.211 2.963 10.248 0 6.606 0zm0 11.992c-2.97 0-5.386-2.416-5.386-5.386S3.636 1.22 6.606 1.22s5.386 2.416 5.386 5.386-2.416 5.386-5.386 5.386z" transform="translate(-1172 -17) translate(-89) translate(89) translate(1172 17)"></path> <path d="M14.821 13.96l-3.496-3.497c-.238-.238-.624-.238-.862 0s-.238.624 0 .862l3.496 3.496c.12.12.275.179.431.179.156 0 .312-.06.431-.179.239-.238.239-.624 0-.862z" transform="translate(-1172 -17) translate(-89) translate(89) translate(1172 17)"></path> </g> </g> </g> </g> </g> </svg> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"> <g fill="none" fill-rule="evenodd"> <g fill="#FFF" fill-rule="nonzero"> <g> <g> <path d="M14.035 6.57l-5.806.017V.895C8.229.4 7.829 0 7.333 0c-.495 0-.895.4-.895.895l.018 5.675H.896c-.497 0-.896.4-.896.895 0 .496.4.895.895.895h5.552v5.675c0 .496.4.895.895.895.496 0 .895-.4.895-.895V8.36h5.798c.496 0 .895-.4.895-.895 0-.496-.404-.895-.895-.895z" transform="translate(-1172 -17) translate(1168 13) rotate(45 4.672 14.328)"></path> </g> </g> </g> </g> </svg> </form></div><div class="right-part"> </div></div><div class="mob-header"> <div class="top-part"> <div class="top-part-left"> <div class="close-menu"> <span class="top"></span> <span class="mid"></span> <span class="bott"></span> </div></div><div class="top-part-mid"> <a href="https://news.net"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/small.svg" alt="" height="20" width="127"> </a> </div><div class="top-part-right"> <a href="#"> <img loading="lazy" class="profile" src="https://news.net/wp-content/themes/news-theme/assets/images/pofile.svg" alt="" height="18" width="18"> </a> </div></div><div class="hidden-menu"> <div class="line"> <div class="right-part__block wth"><img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/icon-weather-white.svg" alt="" height="15" width="15"> °C</div></div><div class="line search"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/search.svg" alt=""> <input type="text" placeholder="Search"> </div><div class="hidden-menu-title"> News </div><div class="menu"> <div class="item"> <div class="text"> <a href="https://news.net">Home</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/top-stories/">Top</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/region-county/">Region</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/local/">Local</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/business/">Business</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/politics/">Politics</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/the-issues/">The Issues</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/entertainment/">Entertain</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/technology/">Tech</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/health-science/">Health</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/life-style/">Life/Style</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/travel/">Travel</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/the-planet/">The Planet</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/essentials/">Essentials</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/good-news/good-news-stories/">Good News</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/videos/">Videos</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/photo-gallery/">Photos</a> </div></div><div class="item"> <div class="text"> <a href="https://news.net/section/sport/">Sport</a> </div></div></div></div></div></header>
 
-	<!--Facebook share button-->
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0" nonce="YBrAVajr"></script>
-	<!--Facebook share button-->
-
 	<section class="first_sec">
 		<!--ADVERT-->
 		<div class="banner-wr wh">
@@ -133,15 +112,9 @@
 		<div class="sticky_box">
 
 			<div class="voa_container">
-				<!-- <div class="voa_cover_block">
-					<div class="voa_cover_block_inner">
-						<div class="voa_cover_block_left">
-							<div class="newsnet_logo_icon"></div>
-							<div class="special_report">Special Report</div>
-						</div>
-						<div class="voa_cover_block_right right"></div>
-					</div>
-				</div> -->
+				<div class="voa_cover_block">
+					<div class="voa_cover_block_inner"></div>
+				</div>
 
 				<div class="voa_container_inner">
 					<iframe class="voa_iframe" frameborder="0" scrolling="auto" src="https://projects.voanews.com/fishing/galapagos/english.html"></iframe>
@@ -149,7 +122,6 @@
 			</div>
 
 			<div class="lower_section">
-				<!--ADVERT-->
 				<div class="banner-wr wh">
 					<div class="banner">
 						<div class="banner__img">
@@ -157,63 +129,64 @@
 						</div>
 					</div>
 				</div>
-				<!--ADVERT-->
 				
 				<footer> <div class="content"> <div class="fl-block"> <div class="fourd-col top w100 df"> <div class="footer-logo w50"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/logo-square.png" alt=""> </div><div class="r w50"> <div class="follow-us-footer"> Follow Us </div><div class="follow-us-footer-medias"> <a class="follow-us-footer-medias__media"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/footer/iconFacebook.svg" alt=""> </a> <a class="follow-us-footer-medias__media"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/footer/iconTwitter.svg" alt=""> </a> <a class="follow-us-footer-medias__media"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/footer/iconInsta.svg" alt=""> </a> <a class="follow-us-footer-medias__media"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/footer/iconYoutube.svg" alt=""> </a> </div></div></div><div class="fourd-col mid w50"> <nav class="foo-menu"> <div class="foo-menu__title ">Navigate</div><ul id="menu-footer" class="menu"> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-21 category main-menu-link " href="https://news.net/section/top-stories/" data-image="top"> Top </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-65279 category main-menu-link " href="https://news.net/section/region-county/" data-image="region"> Region </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-65263 category main-menu-link " href="https://news.net/section/local/" data-image="65263"> Local </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-24 category main-menu-link " href="https://news.net/section/business/" data-image="24"> Business </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-25 category main-menu-link " href="https://news.net/section/politics/" data-image="25"> Politics </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section current-news-ancestor menu-item-26 category main-menu-link " href="https://news.net/section/the-issues/" data-image="26"> The Issues </a> </ul> </nav> </div><div class="fourd-col mid w50"> <nav class="foo-menu"> <div class="foo-menu__title hidden-text">Navigate</div><ul id="menu-footer" class="menu"> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-27 category main-menu-link " href="https://news.net/section/entertainment/" data-image="entertain"> Entertain </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-29 category main-menu-link " href="https://news.net/section/technology/" data-image="tech"> Tech </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-30 category main-menu-link " href="https://news.net/section/health-science/" data-image="health-science"> Health </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-33 category main-menu-link " href="https://news.net/section/life-style/" data-image="life-style"> Life/Style </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-31 category main-menu-link " href="https://news.net/section/travel/" data-image="31"> Travel </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-549308 category main-menu-link " href="https://news.net/section/the-planet/" data-image="549308"> The Planet </a> </ul> </nav> </div><div class="fourd-col mid w50"> <nav class="foo-menu"> <div class="foo-menu__title hidden-text">Navigate</div><ul id="menu-footer" class="menu"> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-549309 category main-menu-link " href="https://news.net/section/essentials/" data-image="549309"> Essentials </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-36 category main-menu-link " href="https://news.net/section/good-news/good-news-stories/" data-image="36"> Good News </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-32 category main-menu-link " href="https://news.net/section/videos/" data-image="32"> Videos </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-34 category main-menu-link " href="https://news.net/section/photo-gallery/" data-image="34"> Photos </a> <a class=" menu-item menu-item-type-taxonomy menu-item-object-news_section menu-item-35 category main-menu-link " href="https://news.net/section/sport/" data-image="35"> Sport </a> </ul> </nav> </div><div class="fourd-col w50"> <nav class="foo-menu"> <div class="foo-menu__title"></div><a href="/terms-and-conditions-and-privacy-policy" class="foo-menu__item">Terms &amp; Conditions / Privacy Policy</a> </nav> </div><div class="fourd-col w100 bott df"> <div class="l w50"> <div class="foo-menu__title">Newsletter</div><div class="foo-sb-title">Subscribe to our newsletter and receive the selection of the best articles.</div></div><form class="w50" action="" method="POST"> <input type="email" name="newsletter_email" placeholder="Enter your email"> <button type="submit"> <img loading="lazy" src="https://news.net/wp-content/themes/news-theme/assets/images/footer/iconSend.svg" alt=""> </button> <div class="copyr">Get the latest news.</div></form> </div></div></div></footer>
 			</div>
 		</div>
 
 		<div class="iframe_scroll_block">
-			<div class="scroll_inner">
-				<div class="voa_cover_block">
-					<div class="voa_cover_block_inner">
-						<div class="voa_cover_block_left">
-							<div class="newsnet_logo_icon"></div>
-							<div class="special_report">Special Report</div>
-						</div>
-						<div class="voa_cover_block_right right"></div>
-					</div>
-				</div>
-			</div>
+			<div class="scroll_inner"></div>
 		</div>
 	</section>
 
 	<script type="text/javascript">
 
-		let URL = document.URL;
-
+		// let body = document.getElementsByTagName('body')[0]
 		let header = document.getElementsByTagName('header')[0]
+		// let first_sec = document.getElementsByClassName('first_sec')[0]
 		let voa_cover_block = document.getElementsByClassName('voa_cover_block')[0]
+		// let voa_cover_block_inner = document.getElementsByClassName('voa_cover_block_inner')[0]
 		let sticky_box = document.getElementsByClassName('sticky_box')[0]
 		let voa_iframe = document.getElementsByClassName('voa_iframe')[0]
 		let iframe_scroll_block = document.getElementsByClassName('iframe_scroll_block')[0]
 		let scroll_inner = document.getElementsByClassName('scroll_inner')[0]
-		let lower_section = document.getElementsByClassName('lower_section')[0]
-
-		let voa_cover_block_right = document.getElementsByClassName('voa_cover_block_right')[0]
+		let lower_section = document.getElementsByClassName('lower_section')[0]	
 
 		const scrollInput = (e)=>{
 
-			e.preventDefault();
-			e.stopPropagation();
+			// e.preventDefault();
+			// e.stopPropagation();
 
-			// if(e.deltaY < -1){
-			// 	window.scrollY -= event.deltaY;
-			// }
+			// // if(e.deltaY < -1){
+			// // 	window.scrollTop -= event.deltaY;
+			// // }
 
-			// window.scrollY = sticky_box.offsetTop;
+			// window.scrollTop = sticky_box.offsetTop;
 			// sticky_box.scrollTop = 0;
 
-			return false;
+			// return false;
 		}
 
 		const windowScroll = ()=>{
+			
+		}
+
+		header.addEventListener('wheel',scrollInput);
+		header.addEventListener('touchstart',scrollInput);
+
+		voa_cover_block.addEventListener('wheel',scrollInput);
+		voa_cover_block.addEventListener('touchstart',scrollInput);
+
+		window.onscroll = ()=>{
+console.log(sticky_box.offsetTop,window.innerWidth)
+
+
 			if(window.innerWidth > 1200){
 
 				scroll_inner.style.top = `${sticky_box.offsetTop - window.scrollY}px`
 
 				if(window.scrollY >= sticky_box.offsetTop){
-					iframe_scroll_block.style.height = '45px'
+					iframe_scroll_block.style.height = '0px'
 				}else{
 					iframe_scroll_block.style.height = '100%'
 				}
@@ -222,93 +195,21 @@
 				scroll_inner.style.top = `${(sticky_box.offsetTop + 70) - window.scrollY}px`
 
 				if(window.scrollY >= sticky_box.offsetTop + 70){
-					iframe_scroll_block.style.height = '45px'
+					iframe_scroll_block.style.height = '0px'
 				}else{
 					iframe_scroll_block.style.height = '100%'
 				}
 			}
-
-			if(window.innerWidth > 1200){
-				if(lower_section.getBoundingClientRect().top < window.innerHeight - 50){
-					voa_iframe.setAttribute('scrolling','no')
-				}else{
-					voa_iframe.setAttribute('scrolling','auto')
-				}
-			}else{
-				if(lower_section.getBoundingClientRect().top < window.innerHeight - 70){
-					voa_iframe.setAttribute('scrolling','no')
-				}else{
-					voa_iframe.setAttribute('scrolling','auto')
-				}
-			}
 		}
 
-		// window.onbeforeunload = function () {
-		// 	window.scrollTo(0, 0);
-		// }
+		sticky_box.onscroll = (e)=>{
 
-		header.addEventListener('wheel',scrollInput);
-		header.addEventListener('touchstart',scrollInput);
-
-		// voa_cover_block.addEventListener('wheel',scrollInput);
-		// voa_cover_block.addEventListener('touchstart',scrollInput);
-
-		window.addEventListener('scroll',windowScroll)
-		window.addEventListener('resize',windowScroll)
-
-		sticky_box.addEventListener('scroll',windowScroll)
-
-		voa_cover_block_right.innerHTML = `
-			<a href="https://www.facebook.com/sharer/sharer.php?u=${URL}" target="_blank">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-					<g fill="none" fill-rule="evenodd" opacity=".3">
-						<g fill="#000" fill-rule="nonzero">
-							<g>
-								<g>
-									<g>
-										<path d="M6.742 19.89v-9.072h3.043l.457-3.537h-3.5V5.024c0-1.024.283-1.722 1.752-1.722h1.871V.138C10.042.096 8.931 0 7.638 0 4.938 0 3.09 1.648 3.09 4.673v2.608H.037v3.537H3.09v9.072h3.652z" transform="translate(-815 -1446) translate(815 1441) translate(0 5) translate(5)"></path>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</svg>
-			</a>
-			<a href="https://twitter.com/intent/tweet?url=${URL}" target="_blank">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-					<g fill="none" fill-rule="evenodd" opacity=".3">
-						<g fill="#000" fill-rule="nonzero">
-							<g>
-								<g>
-									<g>
-										<path d="M6.29 16.253c7.545 0 11.67-6.25 11.67-11.67 0-.178-.003-.354-.011-.53.8-.58 1.497-1.302 2.046-2.124-.735.326-1.526.546-2.356.646.847-.508 1.497-1.312 1.804-2.27-.793.47-1.67.812-2.605.996C16.09.504 15.024.006 13.844.006c-2.265 0-4.102 1.836-4.102 4.1 0 .323.036.636.107.936C6.439 4.87 3.417 3.238 1.394.756c-.352.606-.556 1.31-.556 2.062 0 1.423.725 2.68 1.826 3.414-.673-.02-1.305-.205-1.858-.513v.053c0 1.986 1.413 3.645 3.29 4.02-.344.094-.707.145-1.081.145-.264 0-.521-.026-.771-.074.522 1.63 2.036 2.816 3.832 2.849-1.404 1.1-3.173 1.756-5.095 1.756-.33 0-.657-.02-.978-.057 1.815 1.163 3.97 1.842 6.287 1.842" transform="translate(-850 -1446) translate(815 1441) translate(35 5) translate(0 2)"></path>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</svg>
-			</a>
-			<a href="mailto:info@example.com?&amp;subject=&amp;cc=&amp;bcc=&amp;body=${URL}">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-					<g fill="none" fill-rule="evenodd" opacity=".3">
-						<g fill="#000" fill-rule="nonzero">
-							<g>
-								<g>
-									<g>
-										<path d="M18.242 0H1.758c-.27 0-.524.067-.753.176L9.96 9.132l2.007-1.929L18.997.176c-.23-.11-.483-.176-.754-.176zM19.824 1.005l-6.613 6.612 6.613 6.613c.11-.23.176-.483.176-.753V1.757c0-.27-.066-.523-.176-.752zM.176 1.005c-.11.229-.176.482-.176.753v11.719c0 .27.066.523.176.752l6.613-6.612L.176 1.005z" transform="translate(-885 -1446) translate(815 1441) translate(70 5) translate(0 2)"></path>
-										<path d="M12.383 8.446l-2.008 1.93c-.114.114-.264.17-.414.17-.15 0-.3-.056-.414-.17l-1.93-1.93-6.613 6.612c.23.11.483.176.754.176h16.484c.27 0 .524-.066.753-.176l-6.612-6.612z" transform="translate(-885 -1446) translate(815 1441) translate(70 5) translate(0 2)"></path>
-									</g>
-								</g>
-							</g>
-						</g>
-					</g>
-				</svg>
-			</a>
-		`
-
-		window.scrollTo(0, 0);
-		windowScroll()
+			if(lower_section.getBoundingClientRect().top < window.innerHeight - 50){
+				voa_iframe.setAttribute('scrolling','no')
+			}else{
+				voa_iframe.setAttribute('scrolling','auto')
+			}
+		}
 	</script>
 </body>
 </html>
