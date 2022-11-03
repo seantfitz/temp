@@ -1,144 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-	<title>World Cup 3D Ball</title>
-	<style>
-		@charset "UTF-8";
-		@font-face{
-			font-family: 'Conv_BentonSans_medium';
-			src: url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Medium.eot");
-			src: local("☺"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Medium.woff") format("woff"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Medium.ttf") format("truetype"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Medium.svg") format("svg");
-			font-weight: 500;
-			font-display: auto;
-			font-style: normal;
+(()=>{
+const create_UUID = ()=>{
+	let dt = new Date().getTime();
+	let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c)=>{
+		let r = (dt + Math.random()*16)%16 | 0;
+		dt = Math.floor(dt/16);
+		return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+	});
+		
+	return uuid.replace(/[0-9]/, Math.random().toString(36).replace(/[^a-z]+/g, '')[0]);
+}
+
+let container = document.currentScript.parentNode;
+let UUID = create_UUID();
+container.id = UUID;
+
+document.head.innerHTML += `
+	<style type="text/css" class="graphics-container">
+		.content{
+			overflow: unset;
 		}
-		@font-face{
-			font-family: 'Conv_BentonSans_bold';
-			src: url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Bold.eot");
-			src: local("☺"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Bold.woff") format("woff"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Bold.ttf") format("truetype"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/BentonSans Condensed Bold.svg") format("svg");
-			font-weight: bold;
-			font-display: auto;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Gilroy';
-			src: url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Medium.eot");
-			src: local("Gilroy Medium"), local("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Medium"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Medium.eot?#iefix") format("embedded-opentype"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Medium.woff") format("woff"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Medium.ttf") format("truetype");
-			font-display: auto;
-			font-weight: 500;
-			font-style: normal;
-		}
-		@font-face {
-			font-family: 'Gilroy';
-			src: url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Bold.eot");
-			src: local("Gilroy Bold"), local("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Bold"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Bold.eot?#iefix") format("embedded-opentype"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Bold.woff") format("woff"), url("https://www.news.net/wp-content/themes/news-theme/assets/fonts/Gilroy-Bold.ttf") format("truetype");
-			font-display: auto;
-			font-weight: bold;
-			font-style: normal;
-		}
-		body{
-			margin: 0;
-			font-family: 'Conv_BentonSans_medium', sans-serif;
-		}
-		graphics-container{
+		#${UUID}{
 			position: relative;
+			width: 100vw;
+			height: calc(100vh - 50px);
 			display: flex;
+			margin-bottom: 20px;
+			margin-left: calc(340px - 50vw);
 			justify-content: center;
 			align-items: center;
 			overflow: hidden;
+			font-family: 'Benton-Sans';
 		}
-		.background-container{
+		#${UUID} .background-container{
 			position: absolute;
-			width: 100%;
-			height: 100%;
-			background-image: url('jpg/59.jpeg');
+			width: 110%;
+			height: 110%;
+			background-image: url('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/jpg/59.jpeg');
 			background-position: center;
 			background-size: cover;
 			background-repeat: no-repeat;
-			scale: 110%;
-			transition: all 0.5s;
 		}
-		.ball-container{
+		#${UUID} .ball-container{
 			width: 100%;
 			height: 100%;
 			z-index: 0;
 		}
-		.no-scroll{
+		#${UUID} .no-scroll{
 			touch-action: none;
 		}
-		.intro-container, .card-container{
+		#${UUID} .card-container{
 			position: absolute;
 			pointer-events: none;
 			max-width: 300px;
 			max-height: 400px;
 			width: 100vw;
 			top: 50px;
-		}
-		.intro-container, .intro-touch{
-			font-family: 'Gilroy', sans-serif;
-			left: 100px;
-			background-color: rgba(116, 250, 190, 0.6);
-			color: #2e6279;
-			text-align: center;
-			line-height: 1.25;
-			padding: 20px;
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-ms-box-sizing: border-box;
-			box-sizing: border-box;
-			-webkit-backdrop-filter: grayscale(100%) blur(2px);
-			-moz-backdrop-filter: grayscale(100%) blur(2px);
-			-ms-backdrop-filter: grayscale(100%) blur(2px);
-			backdrop-filter: grayscale(100%) blur(2px);
-			border-radius: 30px 10px 30px;
-			border-top: solid 3px rgba(255, 255, 255, 0.5);
-			border-bottom: solid 3px rgba(255, 255, 255, 0.5);
-		}
-		.intro-touch{
-			position: absolute;
-			width: calc(95vmin - 70px);
-			left: unset;
-			line-height: unset;
-			padding: 10px;
-			pointer-events: none;
-			border: unset;
-			border-radius: 20px;
-			display: none;
-		}
-		.intro_a{
-			font-family: 'Conv_BentonSans_medium', sans-serif;
-			font-size: 44px;
-		}
-		.intro_b{
-			font-size: 21px;
-			border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-			margin-bottom: 16px;
-			padding: 0 0 10px;
-		}
-		.intro-touch .intro_a{
-			font-size: 36px;
-		}
-		.intro-touch .intro_b{
-			font-size: 18px;
-			margin-bottom: 8px;
-			padding: 0 0 5px;
-		}
-		.card-container{
 			right: 50px;
 			bottom: 10px;
 		}
-		.card{
+		#${UUID} .card{
 			position: absolute;
 			max-width: 300px;
 			max-height: 400px;
 			width: 100%;
 			height: 100%;
 			background-color: #efefef;
-			background-size: cover;
-			background-position: top;
-			background-repeat: no-repeat;
 			border-radius: 10px;
 			overflow: hidden;
 			top: 0px;
@@ -153,57 +79,50 @@
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			-ms-box-sizing: border-box;
-			box-sizing: border-box;			
+			box-sizing: border-box;
+			background-size: cover;
+			background-position: top;
+			background-repeat: no-repeat;
+			background-image: url('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/jpg/59.jpeg');
 		}
-		.card .text-box{
-			width: fit-content;
-			background-color: rgba(116, 250, 190, 0.6);
-			-webkit-backdrop-filter: grayscale(100%) blur(2px);
-			-moz-backdrop-filter: grayscale(100%) blur(2px);
-			-ms-backdrop-filter: grayscale(100%) blur(2px);
-			backdrop-filter: grayscale(100%) blur(2px);
-			color: #2e6279;
+		#${UUID} .card .text-box{
+			background-color: rgba(0, 0, 0, 0.5);
+			-webkit-backdrop-filter: blur(5px);
+			-moz-backdrop-filter: blur(5px);
+			-ms-backdrop-filter: blur(5px);
+			backdrop-filter: blur(5px);
+			color: #fff;
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			-ms-box-sizing: border-box;
 			box-sizing: border-box;
 			display: flex;
 		}
-		.card .text-box.player-name{
-			padding: 6px 20px 6px 8px;
-			align-items: center;
+		#${UUID} .card .text-box.player-name{
+			padding: 10px;
 			font-size: 20px;
+			justify-content: space-between;
+			align-items: center;
 			line-height: 1;
-			border-radius: 0 0 20px;
-			border-bottom: solid 3px rgba(255, 255, 255, 0.5);
 		}
-		.card .text-box.player-name .name-bold{
-			font-family: 'Gilroy';
-			font-weight: bold;
-		}
-		.card .text-box .small-text{
+		#${UUID} .card .text-box .small-text{
 			font-size: 14px;
 		}
-		.card .text-box .flag{
+		#${UUID} .card .text-box .flag{
 			width: auto;
 			height: 30px;
-			margin: 0 10px 0 0;
 		}
-		.card .text-box.player-stats{
+		#${UUID} .card .text-box.player-stats{
 			flex-direction: column;
-			align-self: center;
 			text-align: center;
-			padding: 5px 15px 0;
-			border-radius: 30px 30px 0 0;
-			border-top: solid 3px rgba(255, 255, 255, 0.5);
 		}
-		.card .text-box.player-stats .info{
+		#${UUID} .card .text-box.player-stats .info{
+			border-bottom: solid 1px #fff;
 			width: fit-content;
 			margin: 0 auto;
-			padding: 7px 5px 5px;
-			border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+			padding: 5px;
 		}
-		.card .text-box .honours{
+		#${UUID} .card .text-box .honours{
 			font-size: 14px;
 			line-height: 16px;
 			margin-block-start: 0.5em;
@@ -211,7 +130,7 @@
 			padding-inline-start: 0px;
 			list-style-type: none;
 		}
-		.card-nav{
+		#${UUID} .card-nav{
 			position: absolute;
 			width: 40px;
 			height: 40px;
@@ -222,195 +141,95 @@
 			align-items: center;		
 			font-size: 20px;
 			font-weight: bold;
+			border-radius: 50%;
 			cursor: pointer;
 			top: 50%;
 			margin-top: -20px;
 			z-index: 2;
 			pointer-events: auto;
-			background-position: center;
-			background-size: contain;
-			background-repeat: no-repeat;
-			border-radius: 50%;
-			border: solid 1px #fff;
-			box-shadow: rgba(0,0,0,0.75) -5px 5px 5px;
-			transition: all 0.125s ease-in-out;
 		}
-		.card-nav:hover{
-			scale: 110%;
-		}
-		.card-nav:active{
-			scale: 95%;
-			box-shadow: unset;
-		}
-		.card-prev{
+		#${UUID} .card-prev{
 			left: 0px;
 			margin-left: -20px;
-			background-image: url(svg/prev.svg);
 		}
-		.card-next{
-			background-image: url(svg/next.svg);
-		}
-		.card-next, .card-hide{
+		#${UUID} .card-next, .card-hide{
 			right: 0px;
 			margin-right: -20px;
 		}
-		.card-hide{
+		#${UUID} .card-hide{
 			top: 0px;
-			background-image: url(svg/hide.svg);
 		}
-		.touch-controls{
-			position: absolute;
-			width: 95vmin;
-			height: 95vmin;
-			display: none;
-			justify-content: center;
-			align-items: center;
-			pointer-events: none;
+		@media (max-width: 1320px){
+			#${UUID}{
+				margin-left: calc(340px - 50vw);
+			}
 		}
-		.touch-arrow{
-			position: absolute;
-			pointer-events: auto;
-			transition: all 0.25s;
-			-ms-user-select:none;
-			-moz-user-select:none;
-			-webkit-user-select:none;
-			-webkit-touch-callout: none;
-			-khtml-user-select: none;
-			user-select:none;
-		}
-		.touch-arrow:active{
-			scale: 160%;
-		}
-		.arrow-up {
-			top: 0px;
-			width: 0; 
-			height: 0; 
-			border-left: 40px solid transparent;
-			border-right: 40px solid transparent;
-			border-bottom: 30px solid rgba(91,196,241,0.75);
-		}
-		.arrow-down {
-			bottom: 0px;
-			width: 0; 
-			height: 0; 
-			border-left: 40px solid transparent;
-			border-right: 40px solid transparent;
-			border-top: 30px solid rgba(91,196,241,0.75);
-		}
-		.arrow-right {
-			right: 0px;
-			width: 0; 
-			height: 0; 
-			border-top: 40px solid transparent;
-			border-bottom: 40px solid transparent;
-			border-left: 30px solid rgba(91,196,241,0.75);
-		}
-		.arrow-left {
-			left: 0px;
-			width: 0; 
-			height: 0; 
-			border-top: 40px solid transparent;
-			border-bottom: 40px solid transparent; 
-			border-right: 30px solid rgba(91,196,241,0.75);
+		@media (max-width: 1200px){
+			#${UUID}{
+				margin-left: calc(-16.75vw - 25px);
+				height: calc(100vh - 70px);
+			}
 		}
 		@media (max-width: 767px){
-			.card-container, .intro-container{
+			#${UUID}{
+				margin-left: calc(-2.5vw - 16px);
+				height: calc(100vh - 102px);
+			}
+			#${UUID} .card-container{
 				top: 20px;
 				left: 50%;
 				margin-left: -150px;
 			}
-			.card-hide{
+			#${UUID} .card-hide{
 				margin-top: -15px;
 				right: 5px;
 			}
 		}
+		@media (max-width:  479px){
+			#${UUID}{
+				margin-left: -25px;
+			}
+		}
 		@media (max-width: 340px){
-			.card-container, .intro-container{
+			#${UUID} .card-container{
 				width: 90vw;
 				right: unset;
 				left: unset;
 				margin: 0 auto;
 			}
-			.card-prev{
+			#${UUID} .card-prev{
 				left: 5px;
 			}
-			.card-next{
+			#${UUID} .card-next{
 				right: 5px;
 			}
-			.intro_a{
-				font-size: 36px;
-			}
-		}
-		*{
-			-ms-user-select:none;
-			-moz-user-select:none;
-			-webkit-user-select:none;
-			-webkit-touch-callout: none;
-			-khtml-user-select: none;
-			user-select: none;
 		}
 	</style>
-</head>
-<body>
-<script src="script/three.min.js"></script>
-<script src="script/GLTFLoader.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+	<script src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/script/three.min.js"></script>
+	<script src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/script/GLTFLoader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+`;
 
-<graphics-container>
+container.innerHTML = `
 	<div class="background-container"></div>
 	<div class="ball-container"></div>
-	<div class="intro-container">
-		<div class="intro_a">TOP PLAYERS</div>
-		<div class="intro_b">OF&nbsp;THE&nbsp;2022 WORLD&nbsp;CUP</div>
-		<div class="intro_c">
-			Click&nbsp;and&nbsp;drag to&nbsp;rotate&nbsp;the&nbsp;ball.
-			<br>
-			Click&nbsp;the&nbsp;faces to&nbsp;see&nbsp;player&nbsp;info.
-		</div>
-	</div>
-	<div class="intro-touch">
-		<div class="intro_a">TOP PLAYERS</div>
-		<div class="intro_b">OF&nbsp;THE&nbsp;2022 WORLD&nbsp;CUP</div>
-		<div class="intro_c">
-			Use&nbsp;the&nbsp;arrows to&nbsp;rotate&nbsp;the&nbsp;ball.
-			<br>
-			Tap&nbsp;the&nbsp;faces to&nbsp;see&nbsp;player&nbsp;info.
-		</div>
-	</div>
-
-	<div class="touch-controls">
-		<div class="touch-arrow arrow-up"></div>
-		<div class="touch-arrow arrow-down"></div>
-		<div class="touch-arrow arrow-right"></div>
-		<div class="touch-arrow arrow-left"></div>
-	</div>
-
 	<div class="card-container">
 		<div class="card-nav card-prev player-info"></div>
 		<div class="card-nav card-next player-info"></div>
 		<div class="card-nav card-hide player-info"></div>
 	</div>
-</graphics-container>
+`
 
-<script>
+window.addEventListener('load',()=> {
 
 let current_player = 0;
 let this_card = null;
 let prev_card = null;
 let card_shown = false;
 
-const backgroundContainer = document.querySelector('.background-container');
-const ballContainer = document.querySelector('.ball-container');
-const cardContainer = document.querySelector('.card-container');
-const introContainer = document.querySelector('.intro-container');
-const introTouch = document.querySelector('.intro-touch');
-const touchControls = document.querySelector('.touch-controls');
-
-if(window.matchMedia("(any-hover: none)").matches){
-	introTouch.style.display = 'block';
-	touchControls.style.display = 'flex';
-	introContainer.style.display = 'none';
-}
+const backgroundContainer = container.querySelector(`.background-container`);
+const ballContainer = container.querySelector(`.ball-container`);
+const cardContainer = container.querySelector(`.card-container`);
 
 const renderer = new THREE.WebGLRenderer({
 	antialias: true,
@@ -475,8 +294,6 @@ let rate_y = 0;
 const pi2 = Math.PI * 2;
 
 let previousTouch;
-let arrow_touched = false;
-let arrow_direction = null;
 
 const players = {
 	"cristiano_ronaldo": {
@@ -665,18 +482,17 @@ for(let i of player_keys){
 	
 	let node = players[i];
 	let dmy = node['DOB'].split('/');
-	let age = getAge(`${dmy[2]}/${dmy[1]}/${dmy[0]}`);
+	let age = getAge(`${dmy[2]}/${dmy[1]}/${dmy[0]}`)
 
 	cardContainer.innerHTML += `
 	<div class="player-info card" id="${i}">
 		<div class="text-box player-name">
-			<img class="flag" title="${node['country']}" src="svg/${node['country'].toLowerCase().replace(/ /g,'_')}.svg">
-			<div class="name-bold">${node['name']}</div>
+			<div>
+				${node['name']}<br><span class="small-text">${node['country']} - Age: ${age}</span>
+			</div>
+			<img class="flag" title="${node['country']}" src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/svg/${node['country'].toLowerCase().replace(/ /g,'_')}.svg">
 		</div>
 		<div class="text-box player-stats">
-			<div class="info">
-				${node['country']} - <span class="small-text">Age:</span> ${age}
-			</div>
 			<div class="info">
 				<span class="small-text">Club:</span>
 				&nbsp;${node['current_club']}
@@ -691,8 +507,6 @@ for(let i of player_keys){
 	</div>
 	`
 
-	document.getElementById(i).style.backgroundImage = `url('jpg/cards/${i}.jpeg')`;
-
 	let honours = document.getElementById(`${i}_honours`);
 
 	for(let j of node['honours']){
@@ -702,7 +516,65 @@ for(let i of player_keys){
 	}
 };
 
-const animate = ()=>{
+function init() {
+	// scene.background = new THREE.Color('#fff');
+	camera.position.set(camX, camY, camZ);
+	camera.lookAt(new THREE.Vector3(ballX,ballY,ballZ))
+
+	renderer.setSize(window.innerWidth, window.innerHeight);
+	ballContainer.appendChild(renderer.domElement);
+
+	const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
+	ambientLight.intensity = 1.5;
+	scene.add(ambientLight);
+
+	const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.25 );
+	directionalLight.position.set(0, 1, 0);
+	scene.add(directionalLight);
+
+	//Set up shadow properties for the light
+	directionalLight.shadow.mapSize.width = 512; // default
+	directionalLight.shadow.mapSize.height = 512; // default
+	directionalLight.shadow.camera.near = 0.5; // default
+	directionalLight.shadow.camera.far = 500; // default
+
+	spotLight.intensity = 1;
+	spotLight.position.set(camX - 0, camY + 1, camZ + 10);
+	spotLight.distance = camZ * 20
+	spotLight.penumbra = 1
+	spotLight.decay = camZ * 1
+	spotLight.castShadow = true;
+	scene.add( spotLight );
+
+	//Load background texture
+	// const loader = new THREE.TextureLoader();
+	// loader.load('jpg/1024_x_576_football_stadium_image.jpeg' , function(texture){
+	// 	scene.background = texture;  
+	// });
+
+	const ballLoader = new THREE.GLTFLoader();
+	ballLoader.load('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/gltf2/ball-02.gltf', (gltf) => {
+		ball = gltf.scene;
+		ball.traverse(function(child){
+
+			if(child.isMesh){
+				child.castShadow = true;
+				child.receiveShadow = false;
+				sceneMeshes.push(child)
+			}
+		})
+		scene.add(ball);
+		ball.position.x = ballX;
+		ball.position.y = ballY;
+		ball.position.z = ballZ;
+		ball.castShadow = true;
+		spotLight.target = ball;
+	});
+
+	animate();
+};
+
+function animate() {
 
 	if(ball && ball.rotation && moving){
 
@@ -749,7 +621,7 @@ const animate = ()=>{
 	}
 	/*velocity/decay*/
 
-	if(ball && !grabbed && !animating && !arrow_touched){//spinning with inertia
+	if(ball && !grabbed && !animating){//spinning with inertia
 
 		ball.rotation.y += velocity.x * 0.0005;
 		ball.rotation.x += velocity.y * 0.0005;
@@ -769,91 +641,8 @@ const animate = ()=>{
 		}
 	}
 
-	if(ball && arrow_touched && arrow_direction != null){
-
-		switch(arrow_direction){
-			case 'up':
-			ball.rotation.x += 0.025;
-			break;
-			case 'down':
-			ball.rotation.x -= 0.025;
-			break;
-			case 'left':
-			ball.rotation.y += 0.025;
-			break;
-			case 'right':
-			ball.rotation.y -= 0.025;
-			break;
-		}
-		if(ball.rotation.x <= 0){
-			ball.rotation.x = pi2;
-		}
-		if(ball.rotation.x > pi2){
-			ball.rotation.x = 0;
-		}
-
-		if(ball.rotation.y <= 0){
-			ball.rotation.y = pi2;
-		}
-		if(ball.rotation.y > pi2){
-			ball.rotation.y = 0;
-		}
-	}
-
 	renderer.render(scene, camera);
 	requestAnimationFrame(animate);
-};
-
-const init = ()=>{
-
-	camera.position.set(camX, camY, camZ);
-	camera.lookAt(new THREE.Vector3(ballX,ballY,ballZ))
-
-	renderer.setSize(window.innerWidth, window.innerHeight);
-	ballContainer.appendChild(renderer.domElement);
-
-	const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
-	ambientLight.intensity = 1.5;
-	scene.add(ambientLight);
-
-	const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.25 );
-	directionalLight.position.set(0, 1, 0);
-	scene.add(directionalLight);
-
-	//Set up shadow properties for the light
-	directionalLight.shadow.mapSize.width = 512; // default
-	directionalLight.shadow.mapSize.height = 512; // default
-	directionalLight.shadow.camera.near = 0.5; // default
-	directionalLight.shadow.camera.far = 500; // default
-
-	spotLight.intensity = 1;
-	spotLight.position.set(camX - 0, camY + 1, camZ + 10);
-	spotLight.distance = camZ * 20
-	spotLight.penumbra = 1
-	spotLight.decay = camZ * 1
-	spotLight.castShadow = true;
-	scene.add( spotLight );
-
-	const ballLoader = new THREE.GLTFLoader();
-	ballLoader.load('gltf2/ball-02.gltf', (gltf) => {
-		ball = gltf.scene;
-		ball.traverse((child)=>{
-
-			if(child.isMesh){
-				child.castShadow = true;
-				child.receiveShadow = false;
-				sceneMeshes.push(child)
-			}
-		})
-		scene.add(ball);
-		ball.position.x = ballX;
-		ball.position.y = ballY;
-		ball.position.z = ballZ;
-		ball.castShadow = true;
-		spotLight.target = ball;
-	});
-
-	animate();
 };
 
 const drag = (event)=>{
@@ -921,7 +710,7 @@ const dragTouch = (e)=>{
 	}
 }
 
-ballContainer.addEventListener('touchstart',(e)=>{
+const touchStart = (e)=>{
 
 	let event = e.targetTouches[0];
 
@@ -937,7 +726,7 @@ ballContainer.addEventListener('touchstart',(e)=>{
 
 	if(intersects.length > 0 && !animating){
 
-		let all_cards = document.querySelectorAll('.player-info');
+		let all_cards = container.querySelectorAll('.player-info');
 
 		all_cards.forEach(card => {
 			card.style.pointerEvents = 'none';
@@ -964,7 +753,9 @@ ballContainer.addEventListener('touchstart',(e)=>{
 		onDown = null;
 		ballContainer.classList.remove('no-scroll');
 	}
-});
+};
+
+ballContainer.addEventListener('touchstart',touchStart);
 
 ballContainer.addEventListener('touchend',(e)=>{
 
@@ -973,7 +764,7 @@ ballContainer.addEventListener('touchend',(e)=>{
 	previousTouch = null;
 	grabbed = false;
 
-	let all_cards = document.querySelectorAll('.player-info');
+	let all_cards = container.querySelectorAll('.player-info');
 
 	ballContainer.removeEventListener('touchmove',dragTouch);
 	ballContainer.classList.remove('no-scroll');
@@ -1025,7 +816,7 @@ const hideCards = ()=>{
 			rotateZ:'-270deg',
 			ease:'expo-in',
 			onComplete:()=>{
-				let all_cards = document.querySelectorAll('.card');
+				let all_cards = container.querySelectorAll('.card');
 
 				all_cards.forEach(card => {
 					card.style.top = '0px';
@@ -1034,25 +825,16 @@ const hideCards = ()=>{
 				})
 
 				prev_card = null;
-				card_shown = false;
 			}
 		})
 	}
-
-	backgroundContainer.style.scale = '110%';
-	backgroundContainer.style.filter = 'unset';
-
-	if(window.matchMedia("(any-hover: none)").matches){
-		touchControls.style.display = 'flex';
-	}
+	card_shown = false;
 };
 
 const showCards = (material)=>{
 
 	moving = false;
 	animating = true;
-	arrow_touched = false;
-	arrow_direction = null;
 
 	let node = players[material];
 	let to_x = (pi2 / 4) * node['x'];
@@ -1106,7 +888,7 @@ const showCards = (material)=>{
 		}
 	})
 
-	this_card = document.querySelector(`#${material}`);
+	this_card = container.querySelector(`#${material}`);
 
 	if(prev_card != this_card){
 
@@ -1114,6 +896,7 @@ const showCards = (material)=>{
 			prev_card.style.zIndex = 0;
 			gsap.to(prev_card,{
 				duration:0.5,
+				// top:'calc(100vh - 200px)',
 				top:'100vh',
 				rotateY:'90deg',
 				rotateZ:'-270deg',
@@ -1148,28 +931,6 @@ const showCards = (material)=>{
 			}
 		})
 	}
-
-	if(!!introContainer){
-		gsap.to(introContainer,{
-			duration: 0.5,
-			top:'100vh',
-			rotateY:'90deg',
-			rotateZ:'180deg',
-			ease:'expo-in',
-			onComplete:()=>{
-				introContainer.remove();
-			}
-		})
-	}
-
-	if(!!introTouch){
-		introTouch.remove();
-	}
-
-	backgroundContainer.style.scale = '105%';
-	backgroundContainer.style.filter = 'blur(5px)';
-
-	touchControls.style.display = 'none';
 };
 
 const restartRotation = ()=>{
@@ -1247,7 +1008,7 @@ ballContainer.addEventListener('mousedown',()=>{
 
 	if(intersects.length > 0 && !animating){
 
-		let all_cards = document.querySelectorAll('.player-info');
+		let all_cards = container.querySelectorAll('.player-info');
 
 		all_cards.forEach(card => {
 			card.style.pointerEvents = 'none';
@@ -1278,7 +1039,7 @@ ballContainer.addEventListener('mouseup',()=>{
 
 	grabbed = false;
 
-	let all_cards = document.querySelectorAll('.player-info');
+	let all_cards = container.querySelectorAll('.player-info');
 
 	ballContainer.removeEventListener('mousemove',drag);
 
@@ -1355,39 +1116,34 @@ const card_navigation = (e)=>{
 	}
 };
 
-const touch_arrows = document.getElementsByClassName('touch-arrow');
-for(let i of touch_arrows){
+const card_nav = container.getElementsByClassName('card-nav');
 
-	i.addEventListener('touchstart',(e)=>{
-		moving = false;
-		arrow_touched = true;
-		arrow_direction = e.target.classList[1].substring(6);
-		if(!!introTouch){
-			introTouch.remove();
-		}
-	},false);
-
-	i.addEventListener('touchend',(e)=>{
-		arrow_touched = false;
-		arrow_direction = null;
-	},false);
-}
-
-const card_nav = document.getElementsByClassName('card-nav');
 for(let i of card_nav){
 	i.addEventListener('click',card_navigation,false);
 };
 
 document.addEventListener('mouseup',()=>{
 
-	let all_cards = document.querySelectorAll('.player-info');
+	let all_cards = container.querySelectorAll('.player-info');
 
 	all_cards.forEach(card => {
 		card.style.pointerEvents = 'auto';
 	})
 });
 
-window.addEventListener('resize',()=>{
+// document.addEventListener('mousemove',(e)=>{
+// 	let offsetX = ((e.offsetX - (window.innerWidth / 2)) / window.innerWidth) * 2;
+// 	let offsetY = ((e.offsetY - (window.innerHeight / 2)) / window.innerHeight) * 2;
+
+// 	let tiltY = 5 * offsetX;
+// 	let tiltX = 0 * offsetY;
+
+// 	backgroundContainer.style.transform = `perspective(100vw) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+// });
+
+window.addEventListener('resize', onWindowResize, false)
+
+function onWindowResize() {
 
 	if(card_shown){
 		restartRotation();
@@ -1412,13 +1168,8 @@ window.addEventListener('resize',()=>{
 	camera.aspect = window.innerWidth / window.innerHeight
 	camera.updateProjectionMatrix()
 	renderer.setSize(window.innerWidth, window.innerHeight)
-}, false);
-
-window.addEventListener('contextmenu',(e)=>{
-	e.preventDefault(); 
-}, false);
+};
 
 init();
-</script>
-</body>
-</html>
+})
+})()
