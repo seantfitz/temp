@@ -553,7 +553,9 @@ function init() {
 	// });
 
 	const ballLoader = new THREE.GLTFLoader();
+
 	ballLoader.load('gltf2/ball-02.gltf', (gltf) => {
+
 		ball = gltf.scene;
 		ball.traverse(function(child){
 
