@@ -35,7 +35,7 @@ document.head.innerHTML += `
 			position: absolute;
 			width: 110%;
 			height: 110%;
-			background-image: url('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/jpg/59.jpeg');
+			background-image: url('jpg/59.jpeg');
 			background-position: center;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -83,7 +83,7 @@ document.head.innerHTML += `
 			background-size: cover;
 			background-position: top;
 			background-repeat: no-repeat;
-			background-image: url('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/jpg/59.jpeg');
+			background-image: url('jpg/59.jpeg');
 		}
 		#${UUID} .card .text-box{
 			background-color: rgba(0, 0, 0, 0.5);
@@ -205,8 +205,8 @@ document.head.innerHTML += `
 			}
 		}
 	</style>
-	<script src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/script/three.min.js"></script>
-	<script src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/script/GLTFLoader.js"></script>
+	<script src="script/three.min.js"></script>
+	<script src="script/GLTFLoader.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
 `;
 
@@ -490,7 +490,7 @@ for(let i of player_keys){
 			<div>
 				${node['name']}<br><span class="small-text">${node['country']} - Age: ${age}</span>
 			</div>
-			<img class="flag" title="${node['country']}" src="https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/svg/${node['country'].toLowerCase().replace(/ /g,'_')}.svg">
+			<img class="flag" title="${node['country']}" src="svg/${node['country'].toLowerCase().replace(/ /g,'_')}.svg">
 		</div>
 		<div class="text-box player-stats">
 			<div class="info">
@@ -553,7 +553,7 @@ function init() {
 	// });
 
 	const ballLoader = new THREE.GLTFLoader();
-	ballLoader.load('https://newsnet-bucket.s3.ap-southeast-2.amazonaws.com/2022/world-cup/ball-3d/gltf2/ball-02.gltf', (gltf) => {
+	ballLoader.load('gltf2/ball-02.gltf', (gltf) => {
 		ball = gltf.scene;
 		ball.traverse(function(child){
 
